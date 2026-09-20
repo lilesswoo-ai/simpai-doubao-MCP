@@ -27,21 +27,26 @@ GPU 推理 → 生成图片 → 保存到 outputs-mcp/
 
 ### 一键安装（推荐）
 
-把下面这段指令直接发给豆包 AI，它会自动完成下载、安装、配置和测试：
+把下面这段指令直接发给豆包 AI，**先把 `你的SimpAI路径` 替换成你电脑上 SimpAI 的实际安装路径**（例如 `I:\SimpAI`、`D:\AI\SimpAI`），它会自动完成下载、安装、配置和测试：
 
 ```
 帮我安装 SimpAI Doubao MCP：
 
+SimpAI 安装路径：你的SimpAI路径
+（例如 I:\SimpAI，下面所有操作都基于这个路径）
+
 1. 从 GitHub 克隆仓库：https://github.com/lilesswoo-ai/simpai-doubao-MCP
-   克隆到 I:\SimpAI\mcp-server（如果目录已存在则跳过克隆）
-2. 在 I:\SimpAI\mcp-server 下创建 Python 虚拟环境 .venv
+   克隆到 {SimpAI路径}\mcp-server（如果目录已存在则跳过克隆）
+2. 在 {SimpAI路径}\mcp-server 下创建 Python 虚拟环境 .venv
 3. 激活虚拟环境并安装依赖：pip install fastmcp httpx pillow
 4. 确认 ComfyUI 已在 http://127.0.0.1:8188 运行
+   （SimpAI 启动后 ComfyUI API 默认在 8188 端口）
 5. 启动 MCP 服务：python comfy_mcp_http.py（运行在 http://127.0.0.1:8765/mcp）
-6. 测试：调用 simpai 文生图工具生成一张测试图，确认图片输出到 I:\SimpAI\users\Local\outputs-mcp\
+6. 测试：调用 simpai 文生图工具生成一张测试图，确认图片输出到 {SimpAI路径}\users\Local\outputs-mcp\
 7. 告诉我在豆包设置里怎么添加 MCP 连接器
 
-注意：不要修改 SimpAI 安装目录下的任何文件，所有操作都在 I:\SimpAI\mcp-server 内完成。
+注意：不要修改 SimpAI 安装目录下除 mcp-server 以外的任何文件，
+所有 MCP 相关操作都在 {SimpAI路径}\mcp-server 内完成，避免 SimpAI 更新时冲突。
 ```
 
 ### 手动安装
@@ -154,7 +159,7 @@ python comfy_mcp_http.py
 
 ## 输出文件
 
-生成的图片保存在 `I:\SimpAI\users\Local\outputs-mcp\`，命名格式：
+生成的图片保存在 `{SimpAI路径}\users\Local\outputs-mcp\`，命名格式：
 `YYYY-MM-DD_HH-MM-SS_xxxx.png`
 
 ## 注意事项
