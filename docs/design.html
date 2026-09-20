@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SimpAI Studio Pro — 设计方案</title>
+<style>
+  :root {
+    --bg: #0f1115;
+    --surface: #181b21;
+    --surface2: #1f232b;
+    --border: #2a2f3a;
+    --text: #e8eaed;
+    --text2: #9aa0ac;
+    --text3: #6b7280;
+    --accent: #e8b86d;
+    --accent2: #7ab8e8;
+    --green: #6ec98a;
+    --red: #e87a7a;
+    --radius: 8px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Noto Sans SC", -apple-system, "Microsoft YaHei", sans-serif;
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 60px 0 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+  .hero h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero .subtitle { color: var(--text2); font-size: 16px; max-width: 600px; margin: 0 auto; }
+  .hero .tags { margin-top: 20px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .tag {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+
+  /* Section */
+  .section { margin-bottom: 56px; }
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
+  }
+
+  /* Analysis cards */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .analysis-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .analysis-card h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .analysis-card h3 .icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .analysis-card ul { list-style: none; }
+  .analysis-card li {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text2);
+    font-size: 13px;
+  }
+  .analysis-card li:last-child { border: none; }
+  .analysis-card li strong { color: var(--text); }
+
+  /* Layout wireframe */
+  .wireframe {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 20px;
+  }
+  .wf-title { font-size: 13px; color: var(--text3); margin-bottom: 16px; text-align: center; }
+  .wf-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 300px;
+    grid-template-rows: 48px 1fr 120px;
+    gap: 8px;
+    height: 520px;
+  }
+  .wf-cell {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 12px;
+    color: var(--text2);
+    display: flex;
+    flex-direction: column;
+  }
+  .wf-cell .wf-name { font-weight: 600; color: var(--text); margin-bottom: 6px; font-size: 13px; }
+  .wf-cell .wf-desc { font-size: 11px; color: var(--text3); }
+  .wf-top { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; flex-direction: row; }
+  .wf-left { grid-row: 2 / 3; }
+  .wf-center { grid-row: 2 / 3; }
+  .wf-right { grid-row: 2 / 3; }
+  .wf-bottom { grid-column: 1 / -1; grid-row: 3 / 4; }
+  .wf-cell.accent { border-color: var(--accent); }
+  .wf-cell.accent .wf-name { color: var(--accent); }
+
+  /* Feature table */
+  .feature-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .feature-table th, .feature-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .feature-table th {
+    background: var(--surface2);
+    font-weight: 600;
+    color: var(--text);
+  }
+  .feature-table td { color: var(--text2); }
+  .feature-table tr:last-child td { border: none; }
+  .feature-table .module { color: var(--accent); font-weight: 600; }
+
+  /* Workflow */
+  .workflow {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+    flex-wrap: wrap;
+  }
+  .wf-step {
+    flex: 1;
+    min-width: 160px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    position: relative;
+  }
+  .wf-step .step-num {
+    position: absolute;
+    top: -10px; left: 16px;
+    background: var(--accent);
+    color: var(--bg);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .wf-step h4 { font-size: 14px; margin: 8px 0 8px; }
+  .wf-step p { font-size: 12px; color: var(--text2); }
+
+  /* Persona vs Landscape */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .compare-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .compare-card h3 {
+    font-size: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .compare-card.persona h3 { color: var(--accent2); }
+  .compare-card.landscape h3 { color: var(--green); }
+  .compare-card .feature-group { margin-bottom: 16px; }
+  .compare-card .feature-group h4 {
+    font-size: 13px;
+    color: var(--text3);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .compare-card .feature-group ul { list-style: none; }
+  .compare-card .feature-group li {
+    padding: 4px 0;
+    font-size: 13px;
+    color: var(--text2);
+  }
+  .compare-card .feature-group li::before {
+    content: "·";
+    color: var(--accent);
+    margin-right: 8px;
+  }
+
+  /* Tech stack */
+  .tech-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .tech-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .tech-item h4 { font-size: 14px; margin-bottom: 8px; }
+  .tech-item p { font-size: 12px; color: var(--text2); }
+
+  /* Voice flow */
+  .voice-demo {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .voice-line {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+  .voice-line .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .voice-line.user .avatar { background: var(--accent); color: var(--bg); }
+  .voice-line.ai .avatar { background: var(--accent2); color: var(--bg); }
+  .voice-line .bubble {
+    background: var(--surface2);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    max-width: 80%;
+  }
+  .voice-line .action {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text3);
+    font-family: monospace;
+  }
+
+  @media (max-width: 900px) {
+    .analysis-grid, .compare-grid { grid-template-columns: 1fr; }
+    .tech-grid { grid-template-columns: 1fr; }
+    .wf-grid { grid-template-columns: 1fr; height: auto; }
+    .wf-cell { min-height: 80px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>SimpAI Studio <span>Pro</span></h1>
+    <p class="subtitle">本地模型驱动的 AI 修图工作站 — 语音对话 + 人像/风光双模 + 批量同步</p>
+    <div class="tags">
+      <span class="tag">语音交互</span>
+      <span class="tag">人像精修</span>
+      <span class="tag">风光调色</span>
+      <span class="tag">批量处理</span>
+      <span class="tag">完全本地</span>
+    </div>
+  </div>
+
+  <!-- 1. 需求分析 -->
+  <div class="section">
+    <h2 class="section-title">一、需求特点分析</h2>
+    <div class="analysis-grid">
+      <div class="analysis-card">
+        <h3><span class="icon" style="background:#7ab8e8">人</span>人像修图场景</h3>
+        <ul>
+          <li><strong>核心痛点</strong>：磨皮保留质感、肤色统一、瑕疵去除、面部重塑、体型液化</li>
+          <li><strong>常用操作</strong>：磨皮 20%-30% 强度、美白牙齿、调整脸型、祛碎发、换背景</li>
+          <li><strong>批量需求</strong>：一组婚纱/写真 50-200 张，参数要统一</li>
+          <li><strong>输出要求</strong>：不穿帮、不假面、保留皮肤纹理</li>
+          <li><strong>技术方案</strong>：ReActor 换脸 + CodeFormer 修复 + Krea2/MiniMax-H3 编辑</li>
+        </ul>
+      </div>
+      <div class="analysis-card">
+        <h3><span class="icon" style="background:#6ec98a">景</span>风光修图场景</h3>
+        <ul>
+          <li><strong>核心痛点</strong>：光影重塑、天空调色、去除杂物、局部调整、HDR 合成</li>
+          <li><strong>常用操作</strong>：压暗天空、提亮暗部、去游客、换季节、增强氛围光</li>
+          <li><strong>批量需求</strong>：一组风光片 20-50 张，风格要统一</li>
+          <li><strong>输出要求</strong>：自然、不溢出、保留云层/水面/树叶细节</li>
+          <li><strong>技术方案</strong>：Krea2 局部重绘 + ControlNet 控制结构 + LoRA 风格</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 界面布局 -->
+  <div class="section">
+    <h2 class="section-title">二、界面布局设计（4K 适配）</h2>
+    <div class="wireframe">
+      <div class="wf-title">整体布局 — 三栏式，充分利用 4K 宽屏</div>
+      <div class="wf-grid">
+        <!-- Top bar -->
+        <div class="wf-cell wf-top">
+          <div class="wf-name">顶栏</div>
+          <div class="wf-desc">项目名 · 模型切换 · 分辨率 · 队列状态 · 设置</div>
+        </div>
+        <!-- Left: File browser -->
+        <div class="wf-cell wf-left accent">
+          <div class="wf-name">左栏：素材库</div>
+          <div class="wf-desc">
+            · 本地文件夹树浏览<br>
+            · 缩略图网格（可切换大/中/小）<br>
+            · 点击选中，拖入中间编辑区<br>
+            · 批量勾选 → 加入待处理队列<br>
+            · 星标/筛选/排序
+          </div>
+        </div>
+        <!-- Center: Preview -->
+        <div class="wf-cell wf-center">
+          <div class="wf-name">中间：编辑画布</div>
+          <div class="wf-desc">
+            · 大图预览，支持缩放/平移<br>
+            · 原图/效果对比（按住 Shift 切换）<br>
+            · 局部涂抹（蒙版画笔）<br>
+            · 语音对话悬浮窗（右下角）<br>
+            · 4K 下占满中间全部空间
+          </div>
+        </div>
+        <!-- Right: Tools -->
+        <div class="wf-cell wf-right">
+          <div class="wf-name">右栏：功能面板</div>
+          <div class="wf-desc">
+            · Tab 切换：修图 / 调色 / 美颜 / AI分析<br>
+            · 滑块实时预览<br>
+            · LLM 分析结果卡片<br>
+            · 一键应用 / 保存预设<br>
+            · 批量同步按钮
+          </div>
+        </div>
+        <!-- Bottom: Queue -->
+        <div class="wf-cell wf-bottom">
+          <div class="wf-name">底部：批量队列</div>
+          <div class="wf-desc">
+            · 待处理图片缩略图列表<br>
+            · 进度条 · 取消 · 全部应用<br>
+            · 输出路径选择 · 格式/质量设置
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 功能模块 -->
+  <div class="section">
+    <h2 class="section-title">三、功能模块清单</h2>
+    <table class="feature-table">
+      <thead>
+        <tr><th style="width:140px">模块</th><th style="width:100px">类型</th><th>功能说明</th><th style="width:140px">底层模型/工作流</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="module">语音对话</td><td>核心</td><td>语音识别 → LLM 理解意图 → 自动调用对应修图功能。支持"磨皮重一点""天空压暗""把这个人P掉"等自然语言指令</td><td>Whisper + LLM + ComfyUI API</td></tr>
+        <tr><td class="module">AI 图像分析</td><td>核心</td><td>上传图片后自动分析：人像识别、光线评估、肤色检测、构图分析，给出修图建议和提示词</td><td>Qwen-VL + 人像分割模型</td></tr>
+        <tr><td class="module">人像精修</td><td>人像</td><td>智能磨皮（保留纹理）、肤色统一、瑕疵祛除、牙齿美白、面部重塑、体型液化、祛碎发</td><td>CodeFormer + ReActor + Krea2</td></tr>
+        <tr><td class="module">风光调色</td><td>风光</td><td>天空调色、光影重塑、去游客/杂物、季节变换、HDR 效果、氛围光增强、暗部提亮</td><td>Krea2 局部重绘 + ControlNet</td></tr>
+        <tr><td class="module">基础调色</td><td>通用</td><td>亮度、对比度、饱和度、色温、色调、曲线、HSL、色阶、暗角</td><td>本地 Canvas/JS 实时处理</td></tr>
+        <tr><td class="module">局部编辑</td><td>通用</td><td>画笔涂抹蒙版 → AI 重绘选中区域，支持"擦除""替换""增强"三种模式</td><td>Krea2 inpaint + MiniMax-H3 R2I</td></tr>
+        <tr><td class="module">批量同步</td><td>核心</td><td>一张图调好参数 → 一键同步到队列里所有图片，自动逐张处理</td><td>ComfyUI 队列 + 注册表</td></tr>
+        <tr><td class="module">预设管理</td><td>通用</td><td>保存/加载修图预设，内置婚纱/儿童/全家福/风光/夜景等场景预设</td><td>本地 JSON 文件</td></tr>
+        <tr><td class="module">姿势表情调整</td><td>人像</td><td>调整人物姿势、表情（微笑/严肃）、视线方向</td><td>ControlNet OpenPose + Krea2</td></tr>
+        <tr><td class="module">超分辨率</td><td>通用</td><td>一键放大 2x/4x，增强细节</td><td>4x-UltraSharp + RealESRGAN</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4. 人像 vs 风光差异 -->
+  <div class="section">
+    <h2 class="section-title">四、人像 / 风光 双模式差异设计</h2>
+    <div class="compare-grid">
+      <div class="compare-card persona">
+        <h3>人像模式</h3>
+        <div class="feature-group">
+          <h4>右栏默认面板</h4>
+          <ul>
+            <li>磨皮强度（0-100，默认 30）</li>
+            <li>美白（自然/白皙/冷白）</li>
+            <li>脸型调整（瘦脸/大眼/高鼻梁）</li>
+            <li>牙齿美白 + 眼神光</li>
+            <li>祛瑕疵（痘/斑/油光）</li>
+            <li>头发调整（祛碎发/发色统一）</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h4>语音示例</h4>
+          <ul>
+            <li>"磨皮重一点，保留皮肤纹理"</li>
+            <li>"把她脸瘦一点，眼睛放大"</li>
+            <li>"牙齿美白一下，背景虚化"</li>
+          </ul>
+        </div>
+      </div>
+      <div class="compare-card landscape">
+        <h3>风光模式</h3>
+        <div class="feature-group">
+          <h4>右栏默认面板</h4>
+          <ul>
+            <li>天空调色（压暗/增强蓝/加云）</li>
+            <li>光影重塑（HDR/光比/渐变）</li>
+            <li>去杂物（游客/电线/垃圾桶）</li>
+            <li>季节变换（春/夏/秋/冬）</li>
+            <li>氛围光（丁达尔/薄雾/金光）</li>
+            <li>暗部提亮 + 高光压制</li>
+          </ul>
+        </div>
+        <div class="feature-group">
+          <h4>语音示例</h4>
+          <ul>
+            <li>"天空压暗一点，云更有层次"</li>
+            <li>"把右边那个人P掉"</li>
+            <li>"秋天的感觉，树叶变黄"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. 语音交互流程 -->
+  <div class="section">
+    <h2 class="section-title">五、语音对话工作流</h2>
+    <div class="voice-demo">
+      <div class="voice-line user">
+        <div class="avatar">我</div>
+        <div>
+          "这张照片磨皮一下，皮肤自然一点"
+          <div class="action">// 语音识别 → 意图识别：磨皮</div>
+        </div>
+      </div>
+      <div class="voice-line ai">
+        <div class="avatar">AI</div>
+        <div>
+          已识别为人像照片，建议磨皮强度 35%，保留皮肤纹理。应用？
+          <div class="action">// LLM 分析 → 推荐参数 → 等待确认</div>
+        </div>
+      </div>
+      <div class="voice-line user">
+        <div class="avatar">我</div>
+        <div>
+          "可以，再把天空压暗一点"
+          <div class="action">// 意图识别：磨皮 + 天空调色</div>
+        </div>
+      </div>
+      <div class="voice-line ai">
+        <div class="avatar">AI</div>
+        <div>
+          已应用磨皮（35%），正在处理天空调色...完成，对比查看
+          <div class="action">// 调用 Krea2 局部编辑 → 结果回传画布</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 豆包智能对接 -->
+  <div class="section">
+    <h2 class="section-title">六、豆包智能大脑对接流程</h2>
+    <p style="color:var(--text2); margin-bottom:20px; font-size:13px">
+      豆包负责智能分析和对话调参，本地 SimpAI 负责高分辨率执行。通过 MCP 双向打通。
+    </p>
+
+    <div class="voice-demo" style="margin-bottom:24px">
+      <div class="voice-line user">
+        <div class="avatar">软件</div>
+        <div>
+          用户选了一张高分辨率人像，点"智能修图"
+          <div class="action">// 自动生成 1024px 缩略图 → 保存到临时目录</div>
+        </div>
+      </div>
+      <div class="voice-line ai">
+        <div class="avatar">豆包</div>
+        <div>
+          通过 MCP 读取缩略图，分析：人像照，光线偏硬，皮肤有瑕疵，背景杂乱。建议：磨皮+柔化光线+虚化背景
+          <div class="action">// MCP 工具 analyze_image → Qwen-VL 分析</div>
+        </div>
+      </div>
+      <div class="voice-line user">
+        <div class="avatar">我</div>
+        <div>
+          "磨皮重一点，皮肤要自然，背景换成柔和的虚化"
+          <div class="action">// 对话调整提示词</div>
+        </div>
+      </div>
+      <div class="voice-line ai">
+        <div class="avatar">豆包</div>
+        <div>
+          已更新提示词，确认后用原图（6000×4000）执行
+          <div class="action">// 展示最终提示词 → 等待确认</div>
+        </div>
+      </div>
+      <div class="voice-line user">
+        <div class="avatar">我</div>
+        <div>
+          "确认，开始"
+          <div class="action">// MCP 调用 → 传原图路径 → 高分辨率生成</div>
+        </div>
+      </div>
+      <div class="voice-line ai">
+        <div class="avatar">完成</div>
+        <div>
+          生成完成，结果已保存到 outputs-mcp 目录，软件自动刷新
+          <div class="action">// ComfyUI 8K 输出 → 软件显示对比</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="feature-table">
+      <thead>
+        <tr><th style="width:160px">环节</th><th style="width:120px">执行方</th><th>说明</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="module">选图+缩略图</td><td>软件</td><td>用户在软件里选高分辨率原图，自动压缩到 1024px 做分析用</td></tr>
+        <tr><td class="module">图片分析</td><td>豆包 + Qwen-VL</td><td>MCP 工具读取本地缩略图，LLM 识别人像/风光、光线、问题点</td></tr>
+        <tr><td class="module">提示词生成</td><td>豆包 LLM</td><td>根据分析结果自动生成专业修图提示词（参考人像提示词格式）</td></tr>
+        <tr><td class="module">对话调整</td><td>用户 + 豆包</td><td>自然语言对话调整参数，豆包实时更新提示词</td></tr>
+        <tr><td class="module">确认执行</td><td>MCP → ComfyUI</td><td>用户确认后，MCP 传原图路径（不是缩略图）给 ComfyUI，高分辨率生成</td></tr>
+        <tr><td class="module">结果回传</td><td>软件</td><td>生成结果保存到本地目录，软件自动刷新显示，原图/效果对比</td></tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top:20px; padding:16px; background:var(--surface2); border-radius:8px; border-left:3px solid var(--accent)">
+      <div style="font-weight:600; margin-bottom:8px; font-size:13px">关键设计：缩略图分析 + 原图执行</div>
+      <div style="font-size:12px; color:var(--text2)">
+        • 分析用缩略图（1024px）— Qwen-VL 处理快，省显存，足够理解内容<br>
+        • 执行用原图（最高分辨率）— 保证输出质量，不损失细节<br>
+        • 两者通过本地文件路径关联，不需要上传到大模型服务器<br>
+        • MCP 工具接口：analyze_image(缩略图路径) → retouch_image(原图路径, 提示词)
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. 工作流 -->
+  <div class="section">
+    <h2 class="section-title">七、典型工作流程</h2>
+    <div class="workflow">
+      <div class="wf-step">
+        <div class="step-num">1</div>
+        <h4>导入素材</h4>
+        <p>左侧浏览本地文件夹，拖入或勾选批量导入</p>
+      </div>
+      <div class="wf-step">
+        <div class="step-num">2</div>
+        <h4>AI 分析</h4>
+        <p>自动识别人像/风光，给出修图建议和参数</p>
+      </div>
+      <div class="wf-step">
+        <div class="step-num">3</div>
+        <h4>语音调整</h4>
+        <p>对话式调整，或右栏滑块手动微调</p>
+      </div>
+      <div class="wf-step">
+        <div class="step-num">4</div>
+        <h4>批量同步</h4>
+        <p>调好一张 → 同步到队列所有图片</p>
+      </div>
+      <div class="wf-step">
+        <div class="step-num">5</div>
+        <h4>导出交付</h4>
+        <p>选择输出路径/格式/质量，批量导出</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. 技术架构 -->
+  <div class="section">
+    <h2 class="section-title">八、技术架构</h2>
+    <div class="tech-grid">
+      <div class="tech-item">
+        <h4>前端界面</h4>
+        <p>React/Vue + TypeScript<br>
+        Electron 桌面应用<br>
+        Canvas 实时预览<br>
+        4K 响应式布局</p>
+      </div>
+      <div class="tech-item">
+        <h4>后端服务</h4>
+        <p>Node.js/Python API<br>
+        文件系统监听<br>
+        ComfyUI API 调用<br>
+        任务队列管理</p>
+      </div>
+      <div class="tech-item">
+        <h4>AI 模型层</h4>
+        <p>Whisper 语音识别<br>
+        Qwen-VL 图像理解<br>
+        Krea2 / MiniMax-H3 图像编辑<br>
+        ReActor 换脸 + CodeFormer 修复</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

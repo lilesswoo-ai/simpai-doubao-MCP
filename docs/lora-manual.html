@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krea2 LoRA 参考手册</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Microsoft YaHei", -apple-system, sans-serif; background: #1a1a2e; color: #e0e0e0; padding: 20px; }
+h1 { text-align: center; color: #fff; margin: 20px 0 10px; font-size: 28px; }
+.stats { text-align: center; color: #888; margin-bottom: 30px; font-size: 14px; }
+.filter-bar { position: sticky; top: 0; background: #16213e; padding: 12px; text-align: center; z-index: 100; border-radius: 8px; margin-bottom: 20px; }
+.filter-bar button { background: #0f3460; color: #fff; border: none; padding: 8px 16px; margin: 4px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all .2s; }
+.filter-bar button:hover, .filter-bar button.active { background: #e94560; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.card { background: #16213e; border-radius: 12px; overflow: hidden; transition: transform .2s; }
+.card:hover { transform: translateY(-4px); }
+.thumb { width: 100%; aspect-ratio: 3/4; object-fit: cover; background: #0a0a14; display: block; }
+.info { padding: 14px; }
+.name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 8px; word-break: break-all; line-height: 1.4; }
+.trigger { font-size: 11px; color: #e94560; background: rgba(233,69,96,.1); padding: 4px 8px; border-radius: 4px; display: inline-block; margin-bottom: 8px; word-break: break-all; }
+.cat { font-size: 11px; color: #0f3460; background: #e94560; padding: 3px 10px; border-radius: 10px; display: inline-block; }
+.cat-section { margin: 30px 0; }
+.cat-section h2 { color: #e94560; border-bottom: 2px solid #0f3460; padding-bottom: 8px; margin-bottom: 16px; font-size: 22px; }
+.no-thumb { width: 100%; aspect-ratio: 3/4; display: flex; align-items: center; justify-content: center; background: #0a0a14; color: #555; font-size: 48px; }
+</style>
+</head>
+<body>
+<h1>Krea2 LoRA 参考手册</h1>
+<div class="stats">共 84 个 LoRA · 分 7 类</div>
+<div class="filter-bar">
+<button class="active" onclick="filterAll()">全部</button>
+<button onclick="filterCat('摄影')">摄影 (31)</button>
+<button onclick="filterCat('绘画/插画')">绘画/插画 (16)</button>
+<button onclick="filterCat('人物/角色')">人物/角色 (9)</button>
+<button onclick="filterCat('服装')">服装 (7)</button>
+<button onclick="filterCat('NSFW/性感')">NSFW/性感 (19)</button>
+<button onclick="filterCat('工具/控制')">工具/控制 (1)</button>
+<button onclick="filterCat('其他')">其他 (1)</button>
+</div>
+<div class="cat-section" data-cat="摄影">
+<h2>摄影 <span style="font-size:14px;color:#888">(31)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/70年代摄影风格70scolor krea2_000001500.webp" loading="lazy" alt="70年代摄影风格70scolor krea2_000001500">
+<div class="info">
+<div class="name">70年代摄影风格70scolor krea2_000001500</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/70年代胶片Vintage.webp" loading="lazy" alt="70年代胶片Vintage">
+<div class="info">
+<div class="name">70年代胶片Vintage</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/80年代复古情色Rodox_style-krea2_comfy.png" loading="lazy" alt="80年代复古情色Rodox_style-krea2_comfy">
+<div class="info">
+<div class="name">80年代复古情色Rodox_style-krea2_comfy</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/80年代日本偶像showakrea2_c1-st2000.webp" loading="lazy" alt="80年代日本偶像showakrea2_c1-st2000">
+<div class="info">
+<div class="name">80年代日本偶像showakrea2_c1-st2000</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/80年代旧胶片和电影IMPERFECTA_c1-st4000.webp" loading="lazy" alt="80年代旧胶片和电影IMPERFECTA_c1-st4000">
+<div class="info">
+<div class="name">80年代旧胶片和电影IMPERFECTA_c1-st4000</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/80年代胶片照片retrovintagephotoKrea2_c1-st4000.webp" loading="lazy" alt="80年代胶片照片retrovintagephotoKrea2_c1-st4000">
+<div class="info">
+<div class="name">80年代胶片照片retrovintagephotoKrea2_c1-st4000</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/Afterlight_v1.webp" loading="lazy" alt="Afterlight_v1">
+<div class="info">
+<div class="name">Afterlight_v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/krea2_turbo_lora_rank_64_bf16.webp" loading="lazy" alt="krea2_turbo_lora_rank_64_bf16">
+<div class="info">
+<div class="name">krea2_turbo_lora_rank_64_bf16</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/俄罗斯人体摄影 SA_epoch_20.png" loading="lazy" alt="俄罗斯人体摄影 SA_epoch_20">
+<div class="info">
+<div class="name">俄罗斯人体摄影 SA_epoch_20</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/俄罗斯摄影师David Dubnitskiy风格DD_krea2_3315218_epoch_20.png" loading="lazy" alt="俄罗斯摄影师David Dubnitskiy风格DD_krea2_3315218_epoch_20">
+<div class="info">
+<div class="name">俄罗斯摄影师David Dubnitskiy风格DD_krea2_3315218_epoch_20</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/动物摄影Animal_On_Earth_Photography.png" loading="lazy" alt="动物摄影Animal_On_Earth_Photography">
+<div class="info">
+<div class="name">动物摄影Animal_On_Earth_Photography</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/增强皮肤与光线Aurea_Krealism.png" loading="lazy" alt="增强皮肤与光线Aurea_Krealism">
+<div class="info">
+<div class="name">增强皮肤与光线Aurea_Krealism</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">女性情绪摄影broken_tears_v03</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/摄影师风格Purple_Grainy_KR2_V2_D.webp" loading="lazy" alt="摄影师风格Purple_Grainy_KR2_V2_D">
+<div class="info">
+<div class="name">摄影师风格Purple_Grainy_KR2_V2_D</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/旧杂志照片效果Krea2Retro_danish80sphoto-v2.webp" loading="lazy" alt="旧杂志照片效果Krea2Retro_danish80sphoto-v2">
+<div class="info">
+<div class="name">旧杂志照片效果Krea2Retro_danish80sphoto-v2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/时尚杂志摄影fashion_krea2_1_0.png" loading="lazy" alt="时尚杂志摄影fashion_krea2_1_0">
+<div class="info">
+<div class="name">时尚杂志摄影fashion_krea2_1_0</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/暗调dramatic_dark_lighting_krea2.png" loading="lazy" alt="暗调dramatic_dark_lighting_krea2">
+<div class="info">
+<div class="name">暗调dramatic_dark_lighting_krea2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/材质增强Material_Realism_K2.webp" loading="lazy" alt="材质增强Material_Realism_K2">
+<div class="info">
+<div class="name">材质增强Material_Realism_K2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">氛围摄影atmospheric photography</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/温暖的摄影风格178_ncKR2_a0600.jpeg" loading="lazy" alt="温暖的摄影风格178_ncKR2_a0600">
+<div class="info">
+<div class="name">温暖的摄影风格178_ncKR2_a0600</div>
+<div class="trigger">触发词: n0vuschr0ma style</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/湿身CuteWetBeauties_Krea2_v1.jpg" loading="lazy" alt="湿身CuteWetBeauties_Krea2_v1">
+<div class="info">
+<div class="name">湿身CuteWetBeauties_Krea2_v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/电影剧照风格cinematic_movie_still_krea2.png" loading="lazy" alt="电影剧照风格cinematic_movie_still_krea2">
+<div class="info">
+<div class="name">电影剧照风格cinematic_movie_still_krea2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/电影感krea2-cinematic film v1end.webp" loading="lazy" alt="电影感krea2-cinematic film v1end">
+<div class="info">
+<div class="name">电影感krea2-cinematic film v1end</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">电影摄影V1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/真实感细节ultra_real_krea2_v2.jpeg" loading="lazy" alt="真实感细节ultra_real_krea2_v2">
+<div class="info">
+<div class="name">真实感细节ultra_real_krea2_v2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/细节真实感微调rdbt_krea2_v0.2_e4.webp" loading="lazy" alt="细节真实感微调rdbt_krea2_v0.2_e4">
+<div class="info">
+<div class="name">细节真实感微调rdbt_krea2_v0.2_e4</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/胶片TJFilmStyleKrea2_V1.jpeg" loading="lazy" alt="胶片TJFilmStyleKrea2_V1">
+<div class="info">
+<div class="name">胶片TJFilmStyleKrea2_V1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/胶片色彩atmospheric photography.png" loading="lazy" alt="胶片色彩atmospheric photography">
+<div class="info">
+<div class="name">胶片色彩atmospheric photography</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/自然地球摄影Natural_Earth_Photography.png" loading="lazy" alt="自然地球摄影Natural_Earth_Photography">
+<div class="info">
+<div class="name">自然地球摄影Natural_Earth_Photography</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/蓝调梦幻摄影风格094_ncKR2_b0400.jpeg" loading="lazy" alt="蓝调梦幻摄影风格094_ncKR2_b0400">
+<div class="info">
+<div class="name">蓝调梦幻摄影风格094_ncKR2_b0400</div>
+<div class="trigger">触发词: n0vuschr0ma style</div>
+<span class="cat">摄影</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/黑妹Nala_V_Krea2_epoch_10.png" loading="lazy" alt="黑妹Nala_V_Krea2_epoch_10">
+<div class="info">
+<div class="name">黑妹Nala_V_Krea2_epoch_10</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">摄影</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="绘画/插画">
+<h2>绘画/插画 <span style="font-size:14px;color:#888">(16)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/千娇百媚·醇柔微醺CG风.webp" loading="lazy" alt="千娇百媚·醇柔微醺CG风">
+<div class="info">
+<div class="name">千娇百媚·醇柔微醺CG风</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/吉卜力画风retro_ghibli_style_krea2.png" loading="lazy" alt="吉卜力画风retro_ghibli_style_krea2">
+<div class="info">
+<div class="name">吉卜力画风retro_ghibli_style_krea2</div>
+<div class="trigger">触发词: ghibli style</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/幻想艺术画风royals.png" loading="lazy" alt="幻想艺术画风royals">
+<div class="info">
+<div class="name">幻想艺术画风royals</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/插画风格Bradhamel art style= KreaLumi.png" loading="lazy" alt="插画风格Bradhamel art style= KreaLumi">
+<div class="info">
+<div class="name">插画风格Bradhamel art style= KreaLumi</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/摄影师风格Bradhamel art style=KreaPhotoArt_v2.webp" loading="lazy" alt="摄影师风格Bradhamel art style=KreaPhotoArt_v2">
+<div class="info">
+<div class="name">摄影师风格Bradhamel art style=KreaPhotoArt_v2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/欧式插画风格KreaDarrow_E10.png" loading="lazy" alt="欧式插画风格KreaDarrow_E10">
+<div class="info">
+<div class="name">欧式插画风格KreaDarrow_E10</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/欧式插画风格KreaShizuka_V1_E10.png" loading="lazy" alt="欧式插画风格KreaShizuka_V1_E10">
+<div class="info">
+<div class="name">欧式插画风格KreaShizuka_V1_E10</div>
+<div class="trigger">触发词: Bradhamel art style</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/欧式画风 KBradhamel art style-reaLeiMin.png" loading="lazy" alt="欧式画风 KBradhamel art style-reaLeiMin">
+<div class="info">
+<div class="name">欧式画风 KBradhamel art style-reaLeiMin</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/欧式画风Bradhamel art style -KreaWatt.png" loading="lazy" alt="欧式画风Bradhamel art style -KreaWatt">
+<div class="info">
+<div class="name">欧式画风Bradhamel art style -KreaWatt</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/欧式菱角人物画风KreaHelgeson_E10.webp" loading="lazy" alt="欧式菱角人物画风KreaHelgeson_E10">
+<div class="info">
+<div class="name">欧式菱角人物画风KreaHelgeson_E10</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/水彩画风Ink_Watercolor_Krea2.png" loading="lazy" alt="水彩画风Ink_Watercolor_Krea2">
+<div class="info">
+<div class="name">水彩画风Ink_Watercolor_Krea2</div>
+<div class="trigger">触发词: InkWatercolor style.</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/水彩线条画风KreaWator_E10.png" loading="lazy" alt="水彩线条画风KreaWator_E10">
+<div class="info">
+<div class="name">水彩线条画风KreaWator_E10</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/法式插画风格KreaComBook_E10.png" loading="lazy" alt="法式插画风格KreaComBook_E10">
+<div class="info">
+<div class="name">法式插画风格KreaComBook_E10</div>
+<div class="trigger">触发词: Bradhamel art style</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/浪漫的洛菲风格插图Rosy-Lofi-Illustration.png" loading="lazy" alt="浪漫的洛菲风格插图Rosy-Lofi-Illustration">
+<div class="info">
+<div class="name">浪漫的洛菲风格插图Rosy-Lofi-Illustration</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/艺术风格Bradhamel art style=KreaArtifact.png" loading="lazy" alt="艺术风格Bradhamel art style=KreaArtifact">
+<div class="info">
+<div class="name">艺术风格Bradhamel art style=KreaArtifact</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/韩式冷艳插画harustyle_v1.6.png" loading="lazy" alt="韩式冷艳插画harustyle_v1.6">
+<div class="info">
+<div class="name">韩式冷艳插画harustyle_v1.6</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">绘画/插画</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="人物/角色">
+<h2>人物/角色 <span style="font-size:14px;color:#888">(9)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/中国脸型丰富krea2_chinesegirl_attn_blockmlp_r48_v6h1213_atmo4_phase04_reinforced_half.png" loading="lazy" alt="中国脸型丰富krea2_chinesegirl_attn_blockmlp_r48_v6h1213_atmo4_phase04_reinforced_half">
+<div class="info">
+<div class="name">中国脸型丰富krea2_chinesegirl_attn_blockmlp_r48_v6h1213_atmo4_phase04_reinforced_half</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/亚洲女性脸部增强hina_krea2Turbo_lora_tqd_v3.0.png" loading="lazy" alt="亚洲女性脸部增强hina_krea2Turbo_lora_tqd_v3.0">
+<div class="info">
+<div class="name">亚洲女性脸部增强hina_krea2Turbo_lora_tqd_v3.0</div>
+<div class="trigger">触发词: asian woman</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/亚洲超模脸Ray Versatile Face v1.png" loading="lazy" alt="亚洲超模脸Ray Versatile Face v1">
+<div class="info">
+<div class="name">亚洲超模脸Ray Versatile Face v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/人物替换krea2_bodyswap_v1.webp" loading="lazy" alt="人物替换krea2_bodyswap_v1">
+<div class="info">
+<div class="name">人物替换krea2_bodyswap_v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/图像编辑增强人物相似性krea2_identity_edit_v1_2.jpeg" loading="lazy" alt="图像编辑增强人物相似性krea2_identity_edit_v1_2">
+<div class="info">
+<div class="name">图像编辑增强人物相似性krea2_identity_edit_v1_2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/漫转真Krea2_Anything2RealCharacters-V3.webp" loading="lazy" alt="漫转真Krea2_Anything2RealCharacters-V3">
+<div class="info">
+<div class="name">漫转真Krea2_Anything2RealCharacters-V3</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/脸部替换krea2_bfs_v1.1.webp" loading="lazy" alt="脸部替换krea2_bfs_v1.1">
+<div class="info">
+<div class="name">脸部替换krea2_bfs_v1.1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/角色三视图整合版candidate320-single.png" loading="lazy" alt="角色三视图整合版candidate320-single">
+<div class="info">
+<div class="name">角色三视图整合版candidate320-single</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/角色卡三视图Krea-Storyflow-Face-Card-v0.2.webp" loading="lazy" alt="角色卡三视图Krea-Storyflow-Face-Card-v0.2">
+<div class="info">
+<div class="name">角色卡三视图Krea-Storyflow-Face-Card-v0.2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">人物/角色</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="服装">
+<h2>服装 <span style="font-size:14px;color:#888">(7)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/中国古代服饰yijinggufeng.png" loading="lazy" alt="中国古代服饰yijinggufeng">
+<div class="info">
+<div class="name">中国古代服饰yijinggufeng</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/中国古代服饰肚兜guzhuang.png" loading="lazy" alt="中国古代服饰肚兜guzhuang">
+<div class="info">
+<div class="name">中国古代服饰肚兜guzhuang</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/包臀裙btq-nickBodyconskirtE58C85E8.mbqw.jpeg" loading="lazy" alt="包臀裙btq-nickBodyconskirtE58C85E8.mbqw">
+<div class="info">
+<div class="name">包臀裙btq-nickBodyconskirtE58C85E8.mbqw</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/新中式旗袍neo_cheongsam-KreaTurob.png" loading="lazy" alt="新中式旗袍neo_cheongsam-KreaTurob">
+<div class="info">
+<div class="name">新中式旗袍neo_cheongsam-KreaTurob</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/新中式汉服neo_tangzhuang-KreaRaw.png" loading="lazy" alt="新中式汉服neo_tangzhuang-KreaRaw">
+<div class="info">
+<div class="name">新中式汉服neo_tangzhuang-KreaRaw</div>
+<div class="trigger">触发词: neo_tangzhuang,</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/旗袍cheongsam Nick_cheongsam2_Krea2.webp" loading="lazy" alt="旗袍cheongsam Nick_cheongsam2_Krea2">
+<div class="info">
+<div class="name">旗袍cheongsam Nick_cheongsam2_Krea2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/高贵汉服!krea2_TFXChineseStyleHanfu_V1.0.png" loading="lazy" alt="高贵汉服!krea2_TFXChineseStyleHanfu_V1.0">
+<div class="info">
+<div class="name">高贵汉服!krea2_TFXChineseStyleHanfu_V1.0</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">服装</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="NSFW/性感">
+<h2>NSFW/性感 <span style="font-size:14px;color:#888">(19)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/BBW_v1_s2000_Krea2.webp" loading="lazy" alt="BBW_v1_s2000_Krea2">
+<div class="info">
+<div class="name">BBW_v1_s2000_Krea2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">MS_BBW-Style_KR2_V1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/丰满臀部THICC krea2_thickness.webp" loading="lazy" alt="丰满臀部THICC krea2_thickness">
+<div class="info">
+<div class="name">丰满臀部THICC krea2_thickness</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/口交kreablowjob.png" loading="lazy" alt="口交kreablowjob">
+<div class="info">
+<div class="name">口交kreablowjob</div>
+<div class="trigger">触发词: kreablowjob, 1girl, realistic, hetero, breasts, 1boy, penis, nipples, fellatio, oral, jewelry, nude, necklace, lips, looking up, medium breasts, photorealistic, brown hair, uncensored, solo focus, nose, testicles, brown eyes</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/后入krea doggy.png" loading="lazy" alt="后入krea doggy">
+<div class="info">
+<div class="name">后入krea doggy</div>
+<div class="trigger">触发词: kreadoggy, 1girl, 1boy, hetero, sex, penis, nipples, breasts, nude, pussy, completely nude, uncensored, barefoot, standing, vaginal, standing sex, closed eyes, open mouth, feet, indoors, brown hair, facial hair, toes, realistic, kitchen</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/国风瑟瑟女krea2_yunyun123_V1.jpeg" loading="lazy" alt="国风瑟瑟女krea2_yunyun123_V1">
+<div class="info">
+<div class="name">国风瑟瑟女krea2_yunyun123_V1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/女上位krea cowgirl.png" loading="lazy" alt="女上位krea cowgirl">
+<div class="info">
+<div class="name">女上位krea cowgirl</div>
+<div class="trigger">触发词: kreacowgirl, 1girl, 1boy, hetero, long hair, ass, black hair, anus, girl on top, nude, penis, straddling, indoors, sex, completely nude, vaginal, photorealistic, from behind, testicles, uncensored, pussy, cowgirl position, realistic, facing away, male pubic hair, ass grab</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/女性阴部重绘krea2_pussy_inpainting_lora_v1.0.png" loading="lazy" alt="女性阴部重绘krea2_pussy_inpainting_lora_v1.0">
+<div class="info">
+<div class="name">女性阴部重绘krea2_pussy_inpainting_lora_v1.0</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/性爱口交blowjob_epoch_14.png" loading="lazy" alt="性爱口交blowjob_epoch_14">
+<div class="info">
+<div class="name">性爱口交blowjob_epoch_14</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/性爱姿势 站立krea2StandingCarry_v1.webp" loading="lazy" alt="性爱姿势 站立krea2StandingCarry_v1">
+<div class="info">
+<div class="name">性爱姿势 站立krea2StandingCarry_v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">正确插入阴道pussy_helper_v01alpha</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/瑟情Krea2_HMNSFW_AIO.webp" loading="lazy" alt="瑟情Krea2_HMNSFW_AIO">
+<div class="info">
+<div class="name">瑟情Krea2_HMNSFW_AIO</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/瑟瑟Krea2NSFW-V4.png" loading="lazy" alt="瑟瑟Krea2NSFW-V4">
+<div class="info">
+<div class="name">瑟瑟Krea2NSFW-V4</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/真实手机感正向低画质负向高画质PornMaster_Low_Resolution_Slider_Krea2_V1.jpeg" loading="lazy" alt="真实手机感正向低画质负向高画质PornMaster_Low_Resolution_Slider_Krea2_V1">
+<div class="info">
+<div class="name">真实手机感正向低画质负向高画质PornMaster_Low_Resolution_Slider_Krea2_V1</div>
+<div class="trigger">触发词: A low-resolution photo taken with an early mobile phone; the photo was taken in an amateur, candid manner.</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">真实皮肤和脸部PROFESSIONAL_PORNOGRAPHIC_PHOTOSHOOTS_-_KLEIN_epoch_14</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/私处优化MysticXXX_KREA2_v3.png" loading="lazy" alt="私处优化MysticXXX_KREA2_v3">
+<div class="info">
+<div class="name">私处优化MysticXXX_KREA2_v3</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/翘乳TeeKaysTittyTime_SkiSlopeTiddies_SteepSlopeTiddies_XXL_Kr2.webp" loading="lazy" alt="翘乳TeeKaysTittyTime_SkiSlopeTiddies_SteepSlopeTiddies_XXL_Kr2">
+<div class="info">
+<div class="name">翘乳TeeKaysTittyTime_SkiSlopeTiddies_SteepSlopeTiddies_XXL_Kr2</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<div class="no-thumb">无图</div>
+<div class="info">
+<div class="name">身材娇小化nsfwPetite_v1</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+<div class="card">
+<img class="thumb" src="lora-thumbs/香蕉乳翘乳Realistic_Banana_Tits_KREA2_GMR.jpeg" loading="lazy" alt="香蕉乳翘乳Realistic_Banana_Tits_KREA2_GMR">
+<div class="info">
+<div class="name">香蕉乳翘乳Realistic_Banana_Tits_KREA2_GMR</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">NSFW/性感</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="工具/控制">
+<h2>工具/控制 <span style="font-size:14px;color:#888">(1)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/depth-control-lora.webp" loading="lazy" alt="depth-control-lora">
+<div class="info">
+<div class="name">depth-control-lora</div>
+<div class="trigger">触发词: 无</div>
+<span class="cat">工具/控制</span>
+</div></div>
+</div></div>
+<div class="cat-section" data-cat="其他">
+<h2>其他 <span style="font-size:14px;color:#888">(1)</span></h2>
+<div class="grid">
+<div class="card">
+<img class="thumb" src="lora-thumbs/MJ风格美学 BA3LPR1M3.png" loading="lazy" alt="MJ风格美学 BA3LPR1M3">
+<div class="info">
+<div class="name">MJ风格美学 BA3LPR1M3</div>
+<div class="trigger">触发词: BA3LPR1M3</div>
+<span class="cat">其他</span>
+</div></div>
+</div></div>
+
+<script>
+function filterCat(cat) {
+    document.querySelectorAll('.cat-section').forEach(s => {
+        s.style.display = s.dataset.cat === cat ? '' : 'none';
+    });
+    document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+function filterAll() {
+    document.querySelectorAll('.cat-section').forEach(s => s.style.display = '');
+    document.querySelectorAll('.filter-bar button').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+</script>
+</body>
+</html>
