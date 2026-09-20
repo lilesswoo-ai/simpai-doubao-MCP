@@ -91,6 +91,18 @@ python comfy_mcp_http.py
 3. 选择 streamable-http transport
 4. 保存并启用
 
+### 5. 安装 Skill（推荐）
+
+把 `skill/SKILL.md` 复制到豆包的 user_skills 目录下，让豆包自动识别 simpai 生图指令：
+
+```powershell
+$skillDir = "$env:APPDATA\Doubao\User Data\Default\.doubao\agent_mode\workspace\.user_skills\simpai-image-gen"
+New-Item -ItemType Directory -Path $skillDir -Force
+Copy-Item "skill\SKILL.md" "$skillDir\SKILL.md"
+```
+
+安装后新对话中直接说"用simpai生图"或"用qwen生图"即可自动调用。
+
 ## 使用示例
 
 ### 文生图
@@ -130,6 +142,8 @@ python comfy_mcp_http.py
 │   ├── lora-manual.html   # Krea2 LoRA 参考手册
 │   └── design.html        # 影楼修图工作站设计方案
 ├── comfy_mcp_http.py      # MCP HTTP 包装（streamable-http）
+├── skill/
+│   └── SKILL.md            # 豆包 skill（复制到 user_skills 目录）
 └── start_mcp_http.bat    # Windows 启动脚本
 ```
 
