@@ -157,19 +157,13 @@ Copy-Item "skill\SKILL.md" "$skillDir\SKILL.md"
 | 采样 | euler / simple, 8 steps, cfg=1.0 |
 | 横版 16:9 | 1216×688 |
 
-### 11 个可切换模型
+### 可切换模型
 
 1. krea2_raw_fp8_scaled
 2. krea2MuseByStable_v15TurboFp8
 3. Krea2-turbo-Ink_Jade-AIO
 4. Krea2-turbo-White_Marble-AIO
-5. moodyKrea2Mix_v40
-6. 黑兽瑟瑟darkBeast
-7. 红潮编辑加速redcraft23
-8. 瑟瑟专用krea2GPT
-9. 摄影优化rayArtshoot_krea2NSFWV2
-10. 新版Krea2museByStableYogi_v30
-11. 亚洲美女1125Krea2AsianUtopian
+
 
 ## Qwen Image 2.1 配置
 
@@ -206,5 +200,5 @@ Copy-Item "skill\SKILL.md" "$skillDir\SKILL.md"
 - rayArtshoot 等纯 UNET 模型必须用 UNETLoader + 单独 CLIPLoader，不能用 CheckpointLoaderSimple
 
 ## License
-
 MIT
+ningcc@qq.com  发条 2026
