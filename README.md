@@ -157,6 +157,21 @@ python comfy_mcp_http.py
 10. 新版Krea2museByStableYogi_v30
 11. 亚洲美女1125Krea2AsianUtopian
 
+## Qwen Image 2.1 配置
+
+| 组件 | 文件 |
+|------|------|
+| 文生图 UNET | `qwen_image_2512_fp8_e4m3fn.safetensors` |
+| 图像编辑 UNET | `qwen_image_edit_2511_fp8mixed.safetensors` |
+| CLIP | `qwen_2.5_vl_7b_fp8_scaled.safetensors`（type=qwen_image） |
+| VAE | `qwen_image_vae.safetensors` |
+| 采样 | euler / beta, 8 steps, cfg=1.0 |
+| 横版 16:9 | 1280×720 |
+
+**图像编辑节点**：`TextEncodeQwenImageEditPlusPro_lrzjason`（自定义节点，支持多图参考）
+- 输入：clip, vae, image1~image5, prompt
+- 输出：conditioning, latent
+
 ## 输出文件
 
 生成的图片保存在 `{SimpAI路径}\users\Local\outputs-mcp\`，命名格式：
