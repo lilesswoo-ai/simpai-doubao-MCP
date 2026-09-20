@@ -2,6 +2,8 @@
 
 通过 MCP (Model Context Protocol) 让豆包 AI 直接操控本地 SimpAI / ComfyUI 进行图像生成、编辑和批量处理。
 
+##如果还没有安装SimpAI studio的在这里安装 https://github.com/Windecay/SimpAI_Studio/##
+
 ## 功能
 
 - **文生图**：Krea2 系列模型（11个底座模型可切换），支持自定义 LoRA
