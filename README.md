@@ -165,6 +165,12 @@ python comfy_mcp_http.py
 ## 注意事项
 
 - MCP 服务必须在 SimpAI / ComfyUI 运行时才能使用
+- **ComfyUI 未启动时**：Agent 检测到 8188 端口无响应，应先询问用户"是否需要帮你启动 SimpAI/ComfyUI？"，用户确认后执行：
+  ```powershell
+  Start-Process -FilePath "{SimpAI路径}\SimpAIStudiowin\run_ComfyUI_工作流模式.bat" `
+    -WorkingDirectory "{SimpAI路径}\SimpAIStudiowin" -WindowStyle Minimized
+  ```
+  然后轮询等待 8188 端口就绪（每 5 秒检测一次，最多等 5 分钟），就绪后再继续生图任务。
 - 不同电脑部署需要修改 `comfy_mcp_http.py` 中的路径配置
 - LoRA 路径使用反斜杠（ComfyUI 要求）
 - PIL 中文标签必须用 `msyh.ttc`（微软雅黑），Arial 不支持中文
