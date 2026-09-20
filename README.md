@@ -25,6 +25,27 @@ GPU 推理 → 生成图片 → 保存到 outputs-mcp/
 
 ## 快速开始
 
+### 一键安装（推荐）
+
+把下面这段指令直接发给豆包 AI，它会自动完成下载、安装、配置和测试：
+
+```
+帮我安装 SimpAI Doubao MCP：
+
+1. 从 GitHub 克隆仓库：https://github.com/lilesswoo-ai/simpai-doubao-MCP
+   克隆到 I:\SimpAI\mcp-server（如果目录已存在则跳过克隆）
+2. 在 I:\SimpAI\mcp-server 下创建 Python 虚拟环境 .venv
+3. 激活虚拟环境并安装依赖：pip install fastmcp httpx pillow
+4. 确认 ComfyUI 已在 http://127.0.0.1:8188 运行
+5. 启动 MCP 服务：python comfy_mcp_http.py（运行在 http://127.0.0.1:8765/mcp）
+6. 测试：调用 simpai 文生图工具生成一张测试图，确认图片输出到 I:\SimpAI\users\Local\outputs-mcp\
+7. 告诉我在豆包设置里怎么添加 MCP 连接器
+
+注意：不要修改 SimpAI 安装目录下的任何文件，所有操作都在 I:\SimpAI\mcp-server 内完成。
+```
+
+### 手动安装
+
 ### 1. 环境要求
 
 - SimpAI 已安装并运行 ComfyUI（默认端口 8188）
