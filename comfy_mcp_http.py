@@ -1,9 +1,15 @@
-"""Wrapper to run comfy-mcp over streamable-http transport."""
+"""Wrapper to run SimpAI MCP over streamable-http transport."""
 import os
-os.environ["COMFY_LOCAL_URL"] = "http://127.0.0.1:8188"
+import sys
 
-from comfy_mcp import server as comfy_server
-comfy_server._apply_startup_instructions()
+# Allow running from project root
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-# Run with streamable-http
-comfy_server.mcp.run(transport="streamable-http", host="127.0.0.1", port=8765)
+from simpai_mcp.server import mcp, BASE_URL
+
+print(f"[SimpAI MCP] Connecting to ComfyUI at {BASE_URL}")
+print(f"[SimpAI MCP] HTTP server on http://127.0.0.1:8765/mcp")
+
+mcp.settings.host = "127.0.0.1"
+mcp.settings.port = 8765
+mcp.run(transport="streamable-http")

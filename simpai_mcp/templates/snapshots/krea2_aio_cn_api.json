@@ -1,0 +1,1106 @@
+{
+  "3": {
+    "inputs": {
+      "vae_name": "pixel_space"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "vae_model"
+    }
+  },
+  "23": {
+    "inputs": {
+      "unet_name": "placeholder.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "base_model"
+    }
+  },
+  "27": {
+    "inputs": {
+      "prompt": "",
+      "negative_prompt": "",
+      "width": 832,
+      "height": 1216,
+      "cfg": 1,
+      "steps": 8,
+      "refiner_step": 16,
+      "sampler": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "clip_skip": -1,
+      "inpaint_disable_initial_latent": false,
+      "wavespeed_strength": 0.12,
+      "save_final_enhanced_image_only": false
+    },
+    "class_type": "GeneralInput",
+    "_meta": {
+      "title": "GeneralInput"
+    }
+  },
+  "28": {
+    "inputs": {
+      "seed": 0
+    },
+    "class_type": "SeedInput",
+    "_meta": {
+      "title": "SeedInput"
+    }
+  },
+  "44": {
+    "inputs": {
+      "model_name": "4x-AnimeSharp.pth"
+    },
+    "class_type": "UpscaleModelLoader",
+    "_meta": {
+      "title": "upscale_model"
+    }
+  },
+  "58": {
+    "inputs": {
+      "text": [
+        "27",
+        0
+      ],
+      "clip": [
+        "73",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "59": {
+    "inputs": {
+      "text": [
+        "27",
+        1
+      ],
+      "clip": [
+        "73",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "60": {
+    "inputs": {
+      "sage_attention": "auto",
+      "allow_compile": false,
+      "model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "61": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "80",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_1"
+    }
+  },
+  "62": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_2"
+    }
+  },
+  "63": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "62",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_3"
+    }
+  },
+  "64": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "63",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_4"
+    }
+  },
+  "65": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "64",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_5"
+    }
+  },
+  "66": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "65",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_6"
+    }
+  },
+  "67": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "66",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_7"
+    }
+  },
+  "68": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "67",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_8"
+    }
+  },
+  "69": {
+    "inputs": {
+      "clip_name": "placeholder.safetensors",
+      "type": "krea2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "clip_model"
+    }
+  },
+  "70": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_9"
+    }
+  },
+  "71": {
+    "inputs": {
+      "lora_name": "placeholder.safetensors",
+      "strength_model": 0,
+      "model": [
+        "70",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "lora_10"
+    }
+  },
+  "72": {
+    "inputs": {
+      "clip_name": "placeholder.safetensors",
+      "type": "krea2"
+    },
+    "class_type": "CLIPLoaderGGUF",
+    "_meta": {
+      "title": "clip_model"
+    }
+  },
+  "73": {
+    "inputs": {
+      "boolean": [
+        "77",
+        0
+      ],
+      "on_true": [
+        "69",
+        0
+      ],
+      "on_false": [
+        "72",
+        0
+      ]
+    },
+    "class_type": "easy ifElse",
+    "_meta": {
+      "title": "If else"
+    }
+  },
+  "74": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "i2i_model_type"
+    }
+  },
+  "75": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "i2i_clip_type"
+    }
+  },
+  "76": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Int"
+    }
+  },
+  "77": {
+    "inputs": {
+      "comparison": "a == b",
+      "a": [
+        "75",
+        0
+      ],
+      "b": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "easy compare",
+    "_meta": {
+      "title": "Compare"
+    }
+  },
+  "78": {
+    "inputs": {
+      "comparison": "a == b",
+      "a": [
+        "74",
+        0
+      ],
+      "b": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "easy compare",
+    "_meta": {
+      "title": "Compare"
+    }
+  },
+  "79": {
+    "inputs": {
+      "unet_name": "placeholder.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "base_model_gguf"
+    }
+  },
+  "80": {
+    "inputs": {
+      "boolean": [
+        "78",
+        0
+      ],
+      "on_true": [
+        "23",
+        0
+      ],
+      "on_false": [
+        "79",
+        0
+      ]
+    },
+    "class_type": "easy ifElse",
+    "_meta": {
+      "title": "If else"
+    }
+  },
+  "84": {
+    "inputs": {
+      "boolean": [
+        "85",
+        6
+      ],
+      "on_true": [
+        "60",
+        0
+      ],
+      "on_false": [
+        "87",
+        0
+      ]
+    },
+    "class_type": "easy ifElse",
+    "_meta": {
+      "title": "If else"
+    }
+  },
+  "85": {
+    "inputs": {},
+    "class_type": "GetGPUInfo",
+    "_meta": {
+      "title": "Get GPU Info (Compute Capability)"
+    }
+  },
+  "87": {
+    "inputs": {
+      "sage_attention": "disabled",
+      "allow_compile": false,
+      "model": [
+        "71",
+        0
+      ]
+    },
+    "class_type": "PathchSageAttentionKJ",
+    "_meta": {
+      "title": "Patch Sage Attention KJ"
+    }
+  },
+  "aio_image_uov": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_uov_image"
+    }
+  },
+  "aio_image_inpaint": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_inpaint_image"
+    }
+  },
+  "aio_image_mask": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_inpaint_mask"
+    }
+  },
+  "aio_image_enhance": {
+    "inputs": {
+      "image": "welcome.png",
+      "image_name": ""
+    },
+    "class_type": "LoadInputImage",
+    "_meta": {
+      "title": "enhance_input_image"
+    }
+  },
+  "aio_image_ref1": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_ip_image1"
+    }
+  },
+  "aio_image_ref2": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_ip_image2"
+    }
+  },
+  "aio_image_ref3": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_ip_image3"
+    }
+  },
+  "aio_image_ref4": {
+    "inputs": {
+      "image": "welcome.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "i2i_ip_image4"
+    }
+  },
+  "aio_function": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "i2i_function"
+    }
+  },
+  "aio_ref_config_1": {
+    "inputs": {
+      "image": [
+        "aio_image_ref1",
+        0
+      ],
+      "mode": 0,
+      "weight": 1.0,
+      "stop_percent": 1.0,
+      "skip_preprocessor": false
+    },
+    "class_type": "SimpAIAIOReferenceConfig",
+    "_meta": {
+      "title": "SimpAI AIO Reference 1"
+    }
+  },
+  "aio_ref_config_2": {
+    "inputs": {
+      "image": [
+        "aio_image_ref2",
+        0
+      ],
+      "mode": 0,
+      "weight": 1.0,
+      "stop_percent": 1.0,
+      "skip_preprocessor": false
+    },
+    "class_type": "SimpAIAIOReferenceConfig",
+    "_meta": {
+      "title": "SimpAI AIO Reference 2"
+    }
+  },
+  "aio_ref_config_3": {
+    "inputs": {
+      "image": [
+        "aio_image_ref3",
+        0
+      ],
+      "mode": 0,
+      "weight": 1.0,
+      "stop_percent": 1.0,
+      "skip_preprocessor": false
+    },
+    "class_type": "SimpAIAIOReferenceConfig",
+    "_meta": {
+      "title": "SimpAI AIO Reference 3"
+    }
+  },
+  "aio_ref_config_4": {
+    "inputs": {
+      "image": [
+        "aio_image_ref4",
+        0
+      ],
+      "mode": 0,
+      "weight": 1.0,
+      "stop_percent": 1.0,
+      "skip_preprocessor": false
+    },
+    "class_type": "SimpAIAIOReferenceConfig",
+    "_meta": {
+      "title": "SimpAI AIO Reference 4"
+    }
+  },
+  "aio_reference_4": {
+    "inputs": {
+      "model": [
+        "84",
+        0
+      ],
+      "positive": [
+        "58",
+        0
+      ],
+      "negative": [
+        "59",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "reference_1": [
+        "aio_ref_config_1",
+        0
+      ],
+      "reference_2": [
+        "aio_ref_config_2",
+        0
+      ],
+      "reference_3": [
+        "aio_ref_config_3",
+        0
+      ],
+      "reference_4": [
+        "aio_ref_config_4",
+        0
+      ],
+      "clip": [
+        "73",
+        0
+      ],
+      "prompt": [
+        "27",
+        0
+      ],
+      "negative_prompt": [
+        "27",
+        1
+      ],
+      "width": [
+        "27",
+        2
+      ],
+      "height": [
+        "27",
+        3
+      ]
+    },
+    "class_type": "SimpAIAIOReferenceKrea2",
+    "_meta": {
+      "title": "SimpAI AIO Reference Krea2"
+    }
+  },
+  "aio_empty_latent": {
+    "inputs": {
+      "width": [
+        "27",
+        2
+      ],
+      "height": [
+        "27",
+        3
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "AIO Empty Latent"
+    }
+  },
+  "aio_generate": {
+    "inputs": {
+      "seed": [
+        "28",
+        0
+      ],
+      "steps": [
+        "27",
+        5
+      ],
+      "cfg": [
+        "27",
+        4
+      ],
+      "sampler_name": [
+        "27",
+        7
+      ],
+      "scheduler": [
+        "27",
+        8
+      ],
+      "model": [
+        "aio_reference_4",
+        0
+      ],
+      "positive": [
+        "aio_reference_4",
+        1
+      ],
+      "negative": [
+        "aio_reference_4",
+        2
+      ],
+      "latent_image": [
+        "aio_empty_latent",
+        0
+      ],
+      "denoise": 1.0
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "AIO Generate"
+    }
+  },
+  "aio_generated_image": {
+    "inputs": {
+      "samples": [
+        "aio_generate",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "AIO Generated Image"
+    }
+  },
+  "aio_uov_config": {
+    "inputs": {
+      "image": [
+        "aio_image_uov",
+        0
+      ],
+      "mode": 0,
+      "mix_reference": false,
+      "multiple": 1.5,
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "tile_steps": 12,
+      "hires_weight": 0.5,
+      "hires_stop": 0.8,
+      "hires_blur": 0.0
+    },
+    "class_type": "SimpAIAIOUOVConfig",
+    "_meta": {
+      "title": "SimpAI AIO UOV"
+    }
+  },
+  "aio_uov": {
+    "inputs": {
+      "model": [
+        "84",
+        0
+      ],
+      "positive": [
+        "58",
+        0
+      ],
+      "negative": [
+        "59",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "seed": [
+        "28",
+        0
+      ],
+      "steps": [
+        "27",
+        5
+      ],
+      "cfg": [
+        "27",
+        4
+      ],
+      "sampler_name": [
+        "27",
+        7
+      ],
+      "scheduler": [
+        "27",
+        8
+      ],
+      "clip": [
+        "73",
+        0
+      ],
+      "upscale_model": [
+        "44",
+        0
+      ],
+      "uov": [
+        "aio_uov_config",
+        0
+      ],
+      "denoise": [
+        "27",
+        9
+      ]
+    },
+    "class_type": "SimpAIAIOUOVKrea2",
+    "_meta": {
+      "title": "SimpAI AIO UOV Krea2"
+    }
+  },
+  "aio_inpaint_config": {
+    "inputs": {
+      "image": [
+        "aio_image_inpaint",
+        0
+      ],
+      "mask_image": [
+        "aio_image_mask",
+        0
+      ],
+      "mode": 2,
+      "engine": "AnyPaint",
+      "invert_mask": false,
+      "mix_reference": false,
+      "disable_initial_latent": [
+        "27",
+        11
+      ],
+      "denoise": [
+        "27",
+        9
+      ]
+    },
+    "class_type": "SimpAIAIOInpaintConfig",
+    "_meta": {
+      "title": "SimpAI AIO Inpaint"
+    }
+  },
+  "aio_inpaint": {
+    "inputs": {
+      "model": [
+        "84",
+        0
+      ],
+      "positive": [
+        "58",
+        0
+      ],
+      "negative": [
+        "59",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "seed": [
+        "28",
+        0
+      ],
+      "steps": [
+        "27",
+        5
+      ],
+      "cfg": [
+        "27",
+        4
+      ],
+      "sampler_name": [
+        "27",
+        7
+      ],
+      "scheduler": [
+        "27",
+        8
+      ],
+      "inpaint": [
+        "aio_inpaint_config",
+        0
+      ],
+      "clip": [
+        "73",
+        0
+      ],
+      "prompt": [
+        "27",
+        0
+      ],
+      "negative_prompt": [
+        "27",
+        1
+      ]
+    },
+    "class_type": "SimpAIAIOInpaintKrea2",
+    "_meta": {
+      "title": "SimpAI AIO Inpaint Krea2"
+    }
+  },
+  "aio_route": {
+    "inputs": {
+      "function": [
+        "aio_function",
+        0
+      ],
+      "generated": [
+        "aio_generated_image",
+        0
+      ],
+      "uov": [
+        "aio_uov",
+        0
+      ],
+      "inpaint": [
+        "aio_inpaint",
+        0
+      ]
+    },
+    "class_type": "SimpAIAIOImageRoute",
+    "_meta": {
+      "title": "SimpAI AIO Image Route"
+    }
+  },
+  "aio_region_1": {
+    "inputs": {
+      "detection_prompt": "",
+      "prompt": "",
+      "negative_prompt": "",
+      "mask_model": "sam",
+      "cloth_category": "full",
+      "sam_model": "vit_b",
+      "text_threshold": 0.3,
+      "box_threshold": 0.25,
+      "max_detections": 0,
+      "invert_mask": false,
+      "disable_initial_latent": false,
+      "engine": "None",
+      "denoise": 0.5,
+      "respective_field": 0.0,
+      "erode_or_dilate": 0
+    },
+    "class_type": "SimpAIAIORegionConfig",
+    "_meta": {
+      "title": "SimpAI AIO Region 1"
+    }
+  },
+  "aio_region_2": {
+    "inputs": {
+      "detection_prompt": "",
+      "prompt": "",
+      "negative_prompt": "",
+      "mask_model": "sam",
+      "cloth_category": "full",
+      "sam_model": "vit_b",
+      "text_threshold": 0.3,
+      "box_threshold": 0.25,
+      "max_detections": 0,
+      "invert_mask": false,
+      "disable_initial_latent": false,
+      "engine": "None",
+      "denoise": 0.5,
+      "respective_field": 0.0,
+      "erode_or_dilate": 0
+    },
+    "class_type": "SimpAIAIORegionConfig",
+    "_meta": {
+      "title": "SimpAI AIO Region 2"
+    }
+  },
+  "aio_region_3": {
+    "inputs": {
+      "detection_prompt": "",
+      "prompt": "",
+      "negative_prompt": "",
+      "mask_model": "sam",
+      "cloth_category": "full",
+      "sam_model": "vit_b",
+      "text_threshold": 0.3,
+      "box_threshold": 0.25,
+      "max_detections": 0,
+      "invert_mask": false,
+      "disable_initial_latent": false,
+      "engine": "None",
+      "denoise": 0.5,
+      "respective_field": 0.0,
+      "erode_or_dilate": 0
+    },
+    "class_type": "SimpAIAIORegionConfig",
+    "_meta": {
+      "title": "SimpAI AIO Region 3"
+    }
+  },
+  "aio_enhance_uov": {
+    "inputs": {
+      "method": "disabled",
+      "denoise": 0.5,
+      "processing_order": "Before First Enhancement",
+      "prompt_type": "Original Prompts",
+      "multiple": 1.5,
+      "tile_width": 1024,
+      "tile_height": 1024,
+      "tile_steps": 12
+    },
+    "class_type": "SimpAIAIOEnhanceUOVConfig",
+    "_meta": {
+      "title": "SimpAI AIO Enhance UOV"
+    }
+  },
+  "aio_detail": {
+    "inputs": {
+      "model": [
+        "84",
+        0
+      ],
+      "positive": [
+        "58",
+        0
+      ],
+      "negative": [
+        "59",
+        0
+      ],
+      "vae": [
+        "3",
+        0
+      ],
+      "seed": [
+        "28",
+        0
+      ],
+      "steps": [
+        "27",
+        5
+      ],
+      "cfg": [
+        "27",
+        4
+      ],
+      "sampler_name": [
+        "27",
+        7
+      ],
+      "scheduler": [
+        "27",
+        8
+      ],
+      "clip": [
+        "73",
+        0
+      ],
+      "upscale_model": [
+        "44",
+        0
+      ],
+      "region_1": [
+        "aio_region_1",
+        0
+      ],
+      "region_2": [
+        "aio_region_2",
+        0
+      ],
+      "region_3": [
+        "aio_region_3",
+        0
+      ],
+      "image": [
+        "aio_image_enhance",
+        0
+      ],
+      "fallback_image": [
+        "aio_route",
+        0
+      ],
+      "enhance_uov": [
+        "aio_enhance_uov",
+        0
+      ]
+    },
+    "class_type": "SimpAIAIOImproveDetailKrea2",
+    "_meta": {
+      "title": "SimpAI AIO Improve Detail Krea2"
+    }
+  },
+  "aio_output_batch": {
+    "inputs": {
+      "original": [
+        "aio_detail",
+        2
+      ],
+      "enhanced": [
+        "aio_detail",
+        0
+      ],
+      "enhance_active": [
+        "aio_detail",
+        1
+      ],
+      "save_final_only": [
+        "27",
+        13
+      ]
+    },
+    "class_type": "SimpAIAIOOutputBatch",
+    "_meta": {
+      "title": "SimpAI AIO Output Batch"
+    }
+  },
+  "aio_save": {
+    "inputs": {
+      "format": "JPEG",
+      "images": [
+        "aio_output_batch",
+        0
+      ]
+    },
+    "class_type": "SaveImageWebsocketLazy",
+    "_meta": {
+      "title": "result_image"
+    }
+  },
+  "aio_preview": {
+    "inputs": {
+      "images": [
+        "aio_save",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "AIO Preview"
+    }
+  }
+}
